@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "serato-usb-export"
+version = "1.0.3"
+description = "Better Serato USB export that beats Serato's sync by putting all files in 1 folder (without duplicates) and only copying changed files, unlike Serato's sync which takes forever and creates many duplicate file locations"
+keywords = [
+    "serato",
+    "serato usb",
+    "serato usb sync",   
+    "serato usb export",
+]
+requires-python = ">= 3.12"
+readme = "README.md"
+authors = [
+    { name = "bvandercar-vt", email = "bvandercar@outlook.com" },
+]
+license = "MIT"
+dependencies = ["serato_tools"]
+
+[project.urls]
+Homepage = "https://pypi.org/project/serato-tools/"
+Repository = "https://github.com/bvandercar-vt/serato-tools"
+Issues = "https://github.com/bvandercar-vt/serato-tools/issues"
+
+[project.scripts]
+serato_usb_export = "serato_usb_export.usb_export:main"
+
+[tool.setuptools.packages.find]
+where = ["src"] 
+include = ["serato_usb_export*"]  
+
+[tool.black]
+line-length = 120
+
