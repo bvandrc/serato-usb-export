@@ -58,4 +58,4 @@ serato_usb_export --drive E --crate_matcher *house* *techno* *bass* --root_crate
 
 ### Contributing / Issues
 
-_This is a wrapper of my [serato-tools](https://github.com/bvandercar-vt/serato-tools) package. Please open issues and contribute there._
+_This is a wrapper of my [serato-tools](https://github.com/bvandrc/serato-tools) package. Please open issues and contribute there._

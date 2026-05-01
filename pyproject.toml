@@ -15,15 +15,15 @@ keywords = [
 requires-python = ">= 3.12"
 readme = "README.md"
 authors = [
-    { name = "bvandercar-vt", email = "bvandercar@outlook.com" },
+    { name = "bvandrc", email = "bvandercar@outlook.com" },
 ]
 license = "MIT"
 dependencies = ["serato_tools>=3.7.0"]
 
 [project.urls]
 Homepage = "https://pypi.org/project/serato-tools/"
-Repository = "https://github.com/bvandercar-vt/serato-tools"
-Issues = "https://github.com/bvandercar-vt/serato-tools/issues"
+Repository = "https://github.com/bvandrc/serato-tools"
+Issues = "https://github.com/bvandrc/serato-tools/issues"
 
 [project.scripts]
 serato_usb_export = "serato_usb_export.usb_export:main"
