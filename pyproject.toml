@@ -18,7 +18,7 @@ authors = [
     { name = "bvandrc", email = "bvandercar@outlook.com" },
 ]
 license = "MIT"
-dependencies = ["serato_tools>=5.2.0", "requests"]
+dependencies = ["serato_tools>=5.2.0"]
 
 [project.urls]
 Homepage = "https://pypi.org/project/serato-tools/"
