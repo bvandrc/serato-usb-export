@@ -1,33 +1,43 @@
-import sys
-import requests
+import re
 from importlib.metadata import version, PackageNotFoundError
+
+import requests
 
 from serato_tools.usb_export import main as original_main
 
 
-def check_latest_version(package_name):
+def _parse_version(v: str) -> tuple[int, ...]:
+    """Numeric release parts only, e.g. "5.2.0" -> (5, 2, 0); "5.3.0rc1" -> (5, 3, 0)."""
+    parts = []
+    for part in v.split("."):
+        digits = re.match(r"\d+", part)
+        if not digits:
+            break
+        parts.append(int(digits.group()))
+    return tuple(parts)
+
+
+def check_latest_version(package_name: str) -> None:
+    """Warn (never exit) if the installed package is behind PyPI. Silently skips if offline."""
     try:
         installed_version = version(package_name)
     except PackageNotFoundError:
-        print(f"{package_name} is not installed.")
-        sys.exit()
+        return
 
-    response = requests.get(f"https://pypi.org/pypi/{package_name}/json", timeout=10)
-    if response.status_code != 200:
-        print(f"Failed to fetch version info for {package_name} from PyPI.")
+    try:
+        response = requests.get(f"https://pypi.org/pypi/{package_name}/json", timeout=5)
+        response.raise_for_status()
+        latest_version = response.json()["info"]["version"]
+    except (requests.RequestException, ValueError, KeyError):
+        return  # offline or PyPI unavailable; the export doesn't need the network
 
-    latest_version = response.json()["info"]["version"]
-
-    if installed_version != latest_version:
+    if _parse_version(installed_version) < _parse_version(latest_version):
         print(f"WARNING: {package_name} is outdated (installed: {installed_version}, latest: {latest_version}).")
         print(f'run "pip install --upgrade {package_name}"\n')
-        sys.exit()
-
-
-check_latest_version("serato-tools")
 
 
 def main():
+    check_latest_version("serato-tools")
     original_main()
 
 
