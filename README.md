@@ -13,29 +13,31 @@ pip install serato-usb-export
 **NOTE: replaces existing crates on flash drive! (but does not delete existing track files)**
 _(TODO: ability to merge with existing)_
 
+_Quote crate matchers (e.g. `"*"`) so your shell doesn't expand them into file names._
+
 **Windows**
 
 ```cmd
-serato_usb_export --drive E --crate_matcher *
+serato_usb_export --drive E --crate_matcher "*"
 ```
 
 **Mac**
 
 ```cmd
-serato_usb_export --drive "/Volumes/MY_USB/" --crate_matcher *
+serato_usb_export --drive "/Volumes/MY_USB/" --crate_matcher "*"
 ```
 
 **Linux**
 
 ```cmd
-serato_usb_export --drive "/media/dave/MY_USB/" --crate_matcher *
+serato_usb_export --drive "/media/dave/MY_USB/" --crate_matcher "*"
 ```
 
 ### More examples
 _**See [Arguments](#Arguments) section below for configuration info**_
 
 ```cmd
-serato_usb_export --drive E --crate_matcher *house* *techno* *bass* --root_crate="Dave USB Drive"
+serato_usb_export --drive E --crate_matcher "*house*" "*techno*" "*bass*" --root_crate="Dave USB Drive"
 ```
 
 

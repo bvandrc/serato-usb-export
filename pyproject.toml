@@ -21,7 +21,7 @@ license = "MIT"
 dependencies = ["serato_tools>=5.2.0"]
 
 [project.urls]
-Homepage = "https://pypi.org/project/serato-tools/"
+Homepage = "https://github.com/bvandrc/serato-usb-export"
 Repository = "https://github.com/bvandrc/serato-tools"
 Issues = "https://github.com/bvandrc/serato-tools/issues"
 
