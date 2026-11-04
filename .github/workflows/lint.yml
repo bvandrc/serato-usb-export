@@ -30,6 +30,9 @@ jobs:
         python -m pip install .
         python -m pip install pylint
 
+    - name: Smoke Test (CLI starts)
+      run: serato_usb_export --help
+
     - name: Lint (Pylint)
       run: pylint $(git ls-files '*.py')
 
