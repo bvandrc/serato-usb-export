@@ -52,7 +52,7 @@ serato_usb_export --drive E --crate_matcher *house* *techno* *bass* --root_crate
 
   Glob or Regex matcher for crate and smartcrate names to sync, e.g. `*house*`. Can pass multiple, e.g. `*house* *techno*`. To copy all crates, pass `*`
 
-- `--root_crate`
+- `-r, --root_crate`
 
   Not required, but is nice when plugging your drive into another DJ's laptop. Sets all crates to be within this crate on the destination drive
 
