@@ -6,6 +6,7 @@ Thin PyPI wrapper that exposes `serato_tools.usb_export.main` as the `serato_usb
 
 - `src/serato_usb_export/usb_export.py` — re-exports `main` from serato-tools. Keep it that way.
 - `pyproject.toml` — package version and the `serato_tools>=X` dependency floor.
+- `CHANGELOG.md` — user-visible changes per version; a release's notes come from its section.
 - `README.md` — user-facing install/usage/arguments. The Arguments section mirrors serato-tools' argparse options; check `serato_usb_export --help` after a serato-tools bump and update it.
 
 ## Conventions
@@ -16,9 +17,9 @@ Thin PyPI wrapper that exposes `serato_tools.usb_export.main` as the `serato_usb
 
 ## Updating serato-tools
 
-1. Raise `serato_tools>=` in `pyproject.toml` and bump `version`.
+1. Raise `serato_tools>=` in `pyproject.toml`, bump `version`, and add a `CHANGELOG.md` entry.
 2. Install into a clean venv and diff `serato_usb_export --help` against the README's Arguments section.
-3. Publish via the manually triggered "Build & Publish" workflow.
+3. Merge, then publish a GitHub release tagged `v<version>` (e.g. `gh release create v1.3.0 --title v1.3.0 --notes ""`). Publishing it runs `.github/workflows/release.yml`, which fails before building if the tag isn't `v` + the version, uploads to PyPI through trusted publishing, fills empty release notes from the version's `CHANGELOG.md` section, and attaches the built distributions. PyPI's trusted publisher names that workflow file and its `pypi` environment, so renaming either means updating it on PyPI too.
 
 ## Checks (same as CI, `.github/workflows/lint.yml`)
 
