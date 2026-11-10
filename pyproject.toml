@@ -20,6 +20,9 @@ authors = [
 license = "MIT"
 dependencies = ["serato_tools>=5.3.0"]
 
+[project.optional-dependencies]
+dev = ["black", "isort", "pylint", "pyright"]
+
 [project.urls]
 Homepage = "https://github.com/bvandrc/serato-usb-export"
 Repository = "https://github.com/bvandrc/serato-tools"
@@ -36,3 +39,9 @@ include = ["serato_usb_export*"]
 [tool.black]
 line-length = 120
 
+# Groups the imports into the standard library, third-party packages, and this repo's modules, each sorted.
+[tool.isort]
+profile = "black"
+line_length = 120
+known_first_party = ["serato_usb_export"]
+combine_as_imports = true
