@@ -23,9 +23,12 @@ Thin PyPI wrapper that exposes `serato_tools.usb_export.main` as the `serato_usb
 
 ## Checks (same as CI, `.github/workflows/lint.yml`)
 
+Install the tools with `pip install -e ".[dev]"`. Format with `isort .` then `black .`.
+
 ```bash
 serato_usb_export --help   # smoke test: CLI starts against installed serato-tools
 pylint $(git ls-files '*.py')
 pyright
+isort --check-only .
 black --check -l 120 .
 ```
