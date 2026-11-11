@@ -6,7 +6,7 @@ Thin PyPI wrapper that exposes `serato_tools.usb_export.main` as the `serato_usb
 
 - `src/serato_usb_export/usb_export.py` — re-exports `main` from serato-tools. Keep it that way.
 - `pyproject.toml` — package version and the `serato_tools>=X` dependency floor.
-- `CHANGELOG.md` — user-visible changes per version; a release's notes come from its section.
+- `CHANGELOG.md` — user-visible changes per version; a release's notes come from its section. End every sentence of a changelog entry with a period, the last one included, so an entry of two sentences doesn't end one with a period and not the other.
 - `README.md` — user-facing install/usage/arguments. The Arguments section mirrors serato-tools' argparse options; check `serato_usb_export --help` after a serato-tools bump and update it.
 
 ## Conventions
