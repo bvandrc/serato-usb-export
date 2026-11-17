@@ -1,0 +1,17 @@
+name: Sync Conventions
+
+on:
+  schedule:
+    - cron: '0 9 * * 1' # Mondays, 09:00 UTC
+  workflow_dispatch: # Allows manual triggering
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    uses: bvandrc/bvandrc-conventions/.github/workflows/sync.yml@main
+    with:
+      # apply-with-claude is left off, since its Claude can only run JavaScript package managers, not pip.
+      files: all.md python.md pypi-publishing.md
