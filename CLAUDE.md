@@ -11,8 +11,14 @@ Thin PyPI wrapper that exposes `serato_tools.usb_export.main` as the `serato_usb
 
 ## Conventions
 
-- **No runtime version checks or network calls.** Users get a newer serato-tools when the maintainer raises the dependency floor and publishes a new release. Don't add warnings or PyPI checks at startup.
-- Don't add dependencies the wrapper doesn't import directly.
+The repo's conventions live in `conventions/` and are imported here in full. They apply to all work in this repo, and everything else here extends them.
+
+@conventions/all.md
+@conventions/python.md
+@conventions/pypi-publishing.md
+
+`conventions/` is synced from `bvandrc/bvandrc-conventions` by `.github/workflows/sync-conventions.yml`, which deletes and recreates the directory on every run, so edits made here are lost: change them upstream. When a sync adds a new file to `conventions/`, add a matching `@conventions/<file>` import here.
+
 - Python 3.12+ (matches serato-tools).
 
 ## Updating serato-tools
