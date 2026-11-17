@@ -23,12 +23,13 @@ Thin PyPI wrapper that exposes `serato_tools.usb_export.main` as the `serato_usb
 
 ## Checks (same as CI, `.github/workflows/lint.yml`)
 
-Install the tools with `pip install -e ".[dev]"`. Format with `isort .` then `black .`.
+Install the tools with `pip install -e ".[dev]"`. Format with `ruff check --fix .` then `ruff format .`.
 
 ```bash
 serato_usb_export --help   # smoke test: CLI starts against installed serato-tools
-pylint $(git ls-files '*.py')
 pyright
-isort --check-only .
-black --check -l 120 .
+ruff check .               # every rule except those pyproject.toml's [tool.ruff.lint] turns off, each with a reason
+ruff format --check .
 ```
+
+Ruff is pinned below its next minor version (`ruff>=0.17,<0.18` in the `dev` extra), since only a minor release adds stable rules or changes the formatting. Moving to a new minor version is its own PR, deciding for each new rule whether to fix what it flags or ignore it. For a one-off finding that's right as it is, silence it on its line with `# noqa: RULE` and a reason, rather than adding to the ignore list.

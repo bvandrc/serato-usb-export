@@ -21,7 +21,8 @@ license = "MIT"
 dependencies = ["serato_tools>=5.3.0"]
 
 [project.optional-dependencies]
-dev = ["black", "isort", "pylint", "pyright"]
+# Ruff up to its next minor version, since a minor release can add stable rules and change its formatting
+dev = ["ruff>=0.17,<0.18", "pyright"]
 
 [project.urls]
 Homepage = "https://github.com/bvandrc/serato-usb-export"
@@ -36,12 +37,21 @@ serato_usb_export = "serato_usb_export.usb_export:main"
 where = ["src"] 
 include = ["serato_usb_export*"]  
 
-[tool.black]
+[tool.ruff]
 line-length = 120
 
+[tool.ruff.lint]
+# Every stable rule, less those below. A Ruff minor release can add stable rules, which only reach CI through a PR
+# that bumps the pinned Ruff, so each one gets a decision there.
+select = ["ALL"]
+ignore = [
+    "D",  # docstring style: the wrapper's modules only re-export serato-tools' main
+    "CPY",  # copyright notices
+    "COM",  # trailing commas: the formatter adds them, and COM812 conflicts with it
+    "ISC001",  # implicitly concatenated strings on one line: conflicts with the formatter
+]
+
 # Groups the imports into the standard library, third-party packages, and this repo's modules, each sorted.
-[tool.isort]
-profile = "black"
-line_length = 120
-known_first_party = ["serato_usb_export"]
-combine_as_imports = true
+[tool.ruff.lint.isort]
+known-first-party = ["serato_usb_export"]
+combine-as-imports = true
