@@ -25,7 +25,7 @@ The repo's conventions live in `conventions/` and are imported here in full. The
 
 1. Raise `serato_tools>=` in `pyproject.toml`, bump `version`, and add a `CHANGELOG.md` entry.
 2. Install into a clean venv and diff `serato_usb_export --help` against the README's Arguments section.
-3. Merge, then release as `pypi-publishing.md` says. PyPI's trusted publisher names `release.yml` and its `pypi` environment, so renaming either means updating it on PyPI too.
+3. Merge, then release as `pypi-publishing.md` says.
 
 ## Checks (same as CI, `.github/workflows/lint.yml`)
 
