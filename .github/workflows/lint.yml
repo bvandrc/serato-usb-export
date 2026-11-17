@@ -32,14 +32,14 @@ jobs:
     - name: Smoke Test (CLI starts)
       run: serato_usb_export --help
 
-    - name: Lint (Pylint)
-      run: pylint $(git ls-files '*.py')
-
-    - name: Lint (PyRight)
+    - name: Type Check
       uses: jakebailey/pyright-action@v1
 
-    - name: Import Order Check (isort)
-      run: isort --check-only --diff .
+    # Ruff's output doesn't depend on the Python version: it checks against requires-python, not the running one
+    - name: Lint
+      if: matrix.python-version == '3.12'
+      run: ruff check --output-format=github .
 
-    - name: Format Check (Black)
-      uses: psf/black@stable
+    - name: Format Check
+      if: matrix.python-version == '3.12'
+      run: ruff format --check --diff .
