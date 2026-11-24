@@ -4,7 +4,7 @@ Format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [1.2.2] - 2026-11-24
 
-- Crate matchers match a crate's name without its file extension, so a pattern that includes `.crate` or `.scrate` no longer matches anything.
+- Fix: Crate matchers now match a crate's name without its file extension, so a pattern that includes `.crate` or `.scrate` no longer matches anything.
 - Require serato-tools 6.0.0 or newer.
 
 ## [1.2.1] - 2026-11-03
