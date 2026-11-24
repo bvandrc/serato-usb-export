@@ -48,11 +48,11 @@ serato_usb_export --drive E --crate_matcher "*house*" "*techno*" "*bass*" --root
   See argument usage
 - `-d, --drive, --drive_dir`
 
-  Directory of the destination drive. Example: `E` on Windows
+  Directory of the destination drive. Example: `E` on Windows, `/Volumes/USB` on macOS
 
 - `-c, --crates, --crate_matcher`
 
-  Glob or Regex matcher for crate and smartcrate names to sync, e.g. `*house*`. Can pass multiple, e.g. `*house* *techno*`. To copy all crates, pass `*`
+  Glob or Regex matcher for the names of crates and smartcrates to sync, without the file extension, e.g. `*house*`. Can pass multiple, e.g. `*house* *techno*`. To copy all crates, pass `*`
 
 - `-r, --root_crate`
 
